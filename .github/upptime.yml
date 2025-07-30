@@ -1,0 +1,82 @@
+# Upptime configuration for JewGo monitoring
+# This file configures what services to monitor and how often
+
+# Monitor every 5 minutes
+schedule: "*/5 * * * *"
+
+# GitHub repository settings
+owner: mendell
+repo: jewgo-status
+user-agent: "JewGo-Upptime/1.0"
+
+# Sites to monitor
+sites:
+  # Frontend (Vercel)
+  - name: "JewGo Frontend"
+    url: "https://jewgo.vercel.app"
+    method: GET
+    timeout: 30
+    retry: 3
+    
+  # Backend API (Render)
+  - name: "JewGo API"
+    url: "https://jewgo-api.onrender.com"
+    method: GET
+    timeout: 30
+    retry: 3
+    
+  # API Health Check
+  - name: "JewGo API Health"
+    url: "https://jewgo-api.onrender.com/health"
+    method: GET
+    timeout: 30
+    retry: 3
+    
+  # Database Connection Test
+  - name: "JewGo Database"
+    url: "https://jewgo-api.onrender.com/api/restaurants"
+    method: GET
+    timeout: 30
+    retry: 3
+
+# Notifications
+notifications:
+  # Create GitHub issues for downtime
+  - type: issue
+    title: "🚨 {{name}} is down"
+    body: |
+      **{{name}}** is currently **down**.
+      
+      - **URL**: {{url}}
+      - **Status Code**: {{statusCode}}
+      - **Response Time**: {{responseTime}}ms
+      - **Timestamp**: {{timestamp}}
+      
+      This issue will be automatically resolved when the service comes back online.
+      
+  # Resolve issues when service is back up
+  - type: issue-resolve
+    title: "✅ {{name}} is back up"
+    body: |
+      **{{name}}** is back **online**.
+      
+      - **URL**: {{url}}
+      - **Response Time**: {{responseTime}}ms
+      - **Timestamp**: {{timestamp}}
+      
+      Total downtime: {{downtime}}
+
+# Status page settings
+status-website:
+  # Enable GitHub Pages
+  enabled: true
+  # Custom domain (optional)
+  # cname: status.jewgo.io
+  # Theme
+  theme: dark
+  # Logo
+  # logo: https://jewgo.vercel.app/logo.png
+  # Title
+  title: "JewGo Status"
+  # Description
+  description: "Real-time status of JewGo services" 

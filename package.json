@@ -1,0 +1,26 @@
+{
+  "name": "jewgo-status",
+  "version": "1.0.0",
+  "description": "Uptime monitoring for JewGo services",
+  "main": "index.js",
+  "scripts": {
+    "generate": "upptime generate",
+    "update-template": "upptime update-template",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "uptime",
+    "monitoring",
+    "status",
+    "jewgo"
+  ],
+  "author": "JewGo Team",
+  "license": "MIT",
+  "dependencies": {
+    "@upptime/core": "^5.0.0",
+    "@upptime/github-actions": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0"
+  }
+} 
